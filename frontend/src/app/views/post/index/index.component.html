@@ -1,0 +1,72 @@
+<div class="row mt-5">
+    <div class="col-md-12">
+        <!--Card-->
+        <mdb-card cascade="true" narrower="true" class="mt-5">
+            <!--Card image-->
+            <div class="view gradient-card-header blue darken-2">
+                <h4 class="h4-responsive text-white">Post Module</h4>
+            </div>
+            <!--/Card image-->
+            <!--Card content-->
+            <mdb-card-body>
+                <div class="row wow fadeIn mt-5">
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-4">
+                        <a routerLink="/post/create">
+                            <button type="button" mdbBtn color="primary" class="waves-light" mdbWavesEffect>
+                                Add Post
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <form class="d-flex md-form justify-content-center my-0">
+                            <!-- Default input -->
+                            <input type="search" placeholder="Type your query" aria-label="Search" class="form-control"
+                                mdbInput>
+                            <button mdbBtn color="primary" size="sm" class="my-0 p" type="submit">
+                                <mdb-icon fas icon="search"></mdb-icon>
+                            </button>
+
+                        </form>
+                    </div>
+
+
+
+                </div>
+
+                <!--Table-->
+                <table class="table">
+
+                    <!--Table head-->
+                    <thead class="blue-grey lighten-4">
+                        <tr>
+                         <th>ID</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                        <th width="220px">Action</th>
+                        </tr>
+                    </thead>
+                    <!--Table head-->
+
+                    <!--Table body-->
+                    <tbody>
+                        <tr *ngFor="let post of posts; let i = index;">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ post.title }}</td>
+                            <td>{{ post.body }}</td>
+                            <td>
+                                <a href="#" [routerLink]="['/post/', post._id, 'view']" class="btn btn-info">View</a>
+                                <a href="#" [routerLink]="['/post/', post._id, 'edit']" class="btn btn-primary">Edit</a>
+                                <button type="button" (click)="deletePost(post._id)" class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <!--Table body-->
+                </table>
+                <!--Table-->
+            </mdb-card-body>
+            <!--/.Card content-->
+        </mdb-card>
+        <!--/.Card-->
+    </div>
+</div>
